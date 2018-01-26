@@ -6,8 +6,10 @@
   }
 
   function dossiers() {
-    $files = (shell_exec("ls")); // liste les fichiers et dossiers du répertoire courant
-    echo $files; // affiche la liste
+    $files = shell_exec("ls -m"); // liste les fichiers et dossiers du répertoire courant dans une chaine de caractères
+    $file = explode(",", $files); // on transforme la chaîne de caractères en tableau
+    $result = json_encode($file);
+    print_r($result); // affiche la liste au format json
   }
 
   function retour() {
@@ -18,9 +20,8 @@
     repertoire(); //j'exécute la fonction repertoire
   }
 
-  if ($_POST['liste'] == "current") { // si je reçois la valeur "current" de la variable liste
+  if (isset($_POST)) { // si je reçois la valeur "current" de la variable liste
     dossiers(); //j'exécute la fonction dossiers
   }
-
 
 ?>
