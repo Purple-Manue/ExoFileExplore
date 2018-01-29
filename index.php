@@ -10,12 +10,16 @@
   </head>
 
   <body>
-    <div id="navigation">
-      <span id="chemin"></span>
-      <span id="retour"></span>
-    </div>
+    <div class="container">
 
-    <div id="dossiers"></div>
+      <div id="navigation" class="row">
+        <span id="chemin" class="col-8"></span>
+        <span id="retour" class="col-4"><i class="fas fa-caret-square-left fa-2x"></i></span>
+      </div>
+
+      <div id="dossiers" class="row"></div>
+
+    </div>
 
     <script type="text/javascript" src="librairies/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
