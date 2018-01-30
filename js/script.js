@@ -1,7 +1,8 @@
 $(document).ready(function() { //dès que le DOM est chargé
   function explore() {
     var dir = 'current'; // j'initialise une variable dir
-    $.post('fonctions.php', {dir}, function(data, status) { //j'envoie la variable dir à fonctions.php
+    var rep = "/home/";
+    $.post('fonctions.php', {dir:dir, rep:rep}, function(data, status) { //j'envoie la variable dir à fonctions.php
       $('#chemin').html(data); //Affiche moi dans la span avec id="chemin" le retour de fonctions.php
     });
 
@@ -19,17 +20,15 @@ $(document).ready(function() { //dès que le DOM est chargé
           }
        }
 
-         $('.file').click(function(){
-           var rep = $(this).text(); // on récupère le contenu du span
-           //console.log(rep);
-           //explore();
-         });
+       $('.file').click(function(){
+         $rep = $(this).text(); // on récupère le contenu du span
+         console.log(rep);
+         
+       });
       }
     });
   }
 
   explore();
   //alert("coucou");
-
-
 });
