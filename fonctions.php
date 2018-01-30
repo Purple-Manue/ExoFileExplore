@@ -6,7 +6,12 @@
   }
 
   function dossiers() {
-    $files = shell_exec("ls -m"); // liste les fichiers et dossiers du répertoire courant dans une chaine de caractères
+    if (isset($_POST['reponse']) && empty($_POST['reponse'])){
+      $var = $_POST['reponse'];
+    }
+    $cmdshell = "ls -m / ";
+    $cmdshell .= $var;
+    $files = shell_exec($cmdshell); // liste les fichiers et dossiers du répertoire courant dans une chaine de caractères
     $file = explode(",", $files); // on transforme la chaîne de caractères en tableau
     $result = json_encode($file);
     print_r($result); // affiche la liste au format json
