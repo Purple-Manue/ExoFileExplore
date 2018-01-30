@@ -13,9 +13,9 @@ $(document).ready(function() { //dès que le DOM est chargé
        for(var key in json) { // on lance une boucle dans le tableau
          var name = json[key].indexOf("."); // on initialise la variable name dans laquelle on regarde pour chaque clé si elle contient un point
           if (name != "-1") { // si il y a un point dans le nom, on considère qu'il s'agit d'un fichier
-            $('#dossiers').append('<span class="file col-6 col-md-3">' + '<i class="fas fa-file fa-4x">' + '</i>' + '<br />' + json[key] + '</span>');
+            $('#dossiers').append('<span class="file fichier col-6 col-md-3">' + '<i class="fas fa-file fa-4x">' + '</i>' + '<br />' + json[key] + '</span>');
           } else { // sinon, on considère que c'est un dossier et on affiche une icone en conséquence
-            $('#dossiers').append('<span class="file col-6 col-md-3">' + '<i class="fas fa-folder-open fa-4x">' + '</i>' + '<br />' + json[key] + '</span>');
+            $('#dossiers').append('<span class="file dossier col-6 col-md-3">' + '<a>' + '<i class="fas fa-folder-open fa-4x">' + '</i>' + '</a>' + '<br />' + json[key] + '</span>');
           }
        }
 
@@ -25,7 +25,11 @@ $(document).ready(function() { //dès que le DOM est chargé
            //explore();
          });
       }
+        $('#retour').click(function()){
+          $(this).();
+        }
     });
+
   }
 
   explore();
