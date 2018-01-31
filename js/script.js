@@ -28,17 +28,10 @@ $(document).ready(function() { //dès que le DOM est chargé
        }
 
        $('.file').click(function(){
-         var name = $(this).text(); // on récupère le contenu du span
-         var test = name.indexOf(".");
-         var rep;
-         if (test != "-1") { 
-            rep = dir;
-         }else {
-            rep = dir+"/"+name; 
-         }
+         var rep = dir+"/"+$(this).text(); // on récupère le contenu du span
          console.log(rep);
          $.post ('fonctions.php', {repertoire: rep}, function(data, status) {
-          $('#dossiers').html("");
+          $('#dossiers').html(data);
             explore(rep);
          })
        });
@@ -46,14 +39,9 @@ $(document).ready(function() { //dès que le DOM est chargé
     });
 
     $('#retour').click(function() {
-      var rep = $('#chemin').html();
-      //console.log(rep);
-      $.post ('fonctions.php', {action: "retour", current: rep}, function(data, status) {
+      $.post ('fonctions.php', {action: retour}, function(data, status) {
        $('#chemin').html(data);
-       var current = $('#chemin').html();
-       $('#dossiers').html("");
-         explore(current);
-     });
+      })
     });
 
   }
