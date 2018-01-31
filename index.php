@@ -11,10 +11,10 @@
 
   <body>
     <div class="container">
-
+      <h1> FILE EXPLORE</h1>
       <div id="navigation" class="row">
         <span id="chemin" class="col-8"></span>
-        <span id="retour" class="col-4"><i class="fas fa-caret-square-left fa-2x"></i></span>
+        <span id="retour" class="col-4"><i class=" back fas fa-caret-square-left fa-2x "></i></span>
       </div>
 
       <div id="dossiers" class="row"></div>
