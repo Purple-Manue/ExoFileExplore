@@ -35,13 +35,8 @@ $(document).ready(function() { //dès que le DOM est chargé
             explore(rep);
          })
        });
-
      }
-
     });
-
   }
-
   explore("/home");
-
 });
