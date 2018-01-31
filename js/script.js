@@ -14,10 +14,10 @@ $(document).ready(function() { //dès que le DOM est chargé
       data: "repertoire="+dir,
       //dataType: 'json', // on déclare que les données seront un tableau json
       success: function(json) {
-      //  console.log(json);
+      console.log(json);
 
       var lst = JSON.parse(json);
-      console.log(lst);
+      console.log(lst[1]);
        for (var i=0; i<lst[1].length; i++) { // on lance une boucle dans le tableau
          var name = lst[1][i].indexOf("."); // on initialise la variable name dans laquelle on regarde pour chaque clé si elle contient un point
           if (name != "-1") { // si il y a un point dans le nom, on considère qu'il s'agit d'un fichier
@@ -28,8 +28,8 @@ $(document).ready(function() { //dès que le DOM est chargé
        }
 
        $('.file').click(function(){
-         var rep = $(this).text(); // on récupère le contenu du span
-         //console.log(rep);
+         var rep = dir+"/"+$(this).text(); // on récupère le contenu du span
+         console.log(rep);
          $.post ('fonctions.php', {repertoire: rep}, function(data, status) {
           $('#dossiers').html(data);
             explore(rep);
@@ -37,6 +37,13 @@ $(document).ready(function() { //dès que le DOM est chargé
        });
      }
     });
+
+    $('#retour').click(function() {
+      $.post ('fonctions.php', {action: retour}, function(data, status) {
+       $('#chemin').html(data);
+      })
+    });
+
   }
   explore("/home");
 });
