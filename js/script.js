@@ -6,7 +6,6 @@ $(document).ready(function() { //dès que le DOM est chargé
     $.post('fonctions.php', {repertoire: dir}, function(data, status) { //j'envoie la variable dir à fonctions.php
       $('#chemin').html(dir); //Affiche moi dans la span avec id="chemin" le retour de fonctions.php
     });
-    //console.log(dir);
 
     $.ajax({
       type:"POST", // on déclare un type post pour la requête
@@ -21,9 +20,9 @@ $(document).ready(function() { //dès que le DOM est chargé
        for (var i=0; i<lst[1].length; i++) { // on lance une boucle dans le tableau
          var name = lst[1][i].indexOf("."); // on initialise la variable name dans laquelle on regarde pour chaque clé si elle contient un point
           if (name != "-1") { // si il y a un point dans le nom, on considère qu'il s'agit d'un fichier
-            $('#dossiers').append('<span class="file col-6 col-md-3">' + '<i class="fas fa-file fa-4x">' + '</i>' + '<br />' + lst[1][i] + '</span>');
+            $('#dossiers').append('<span class="fichier file col-6 col-md-3">' + '<i class="fas fa-file fa-4x">' + '</i>' + '<br />' + lst[1][i] + '</span>');
           } else { // sinon, on considère que c'est un dossier et on affiche une icone en conséquence
-            $('#dossiers').append('<span class="file col-6 col-md-3">' + '<i class="fas fa-folder-open fa-4x">' + '</i>' + '<br />' + lst[1][i] + '</span>');
+            $('#dossiers').append('<span class="dossier file col-6 col-md-3">' + '<i class="fas fa-folder-open fa-4x">' + '</i>' + '<br />' + lst[1][i] + '</span>');
           }
        }
 
@@ -37,27 +36,23 @@ $(document).ready(function() { //dès que le DOM est chargé
             $.post ('fonctions.php', {repertoire: rep}, function(data, status) {
             $('#dossiers').html("");
             explore(rep);
-            }) 
+            })
          }
-         
        });
      }
-    });
 
-    $('#retour').click(function() {
-      var rep = $('#chemin').html();
-      console.log(dir);
-      $.post ('fonctions.php', {action: "retour", current: rep}, function(data, status) {
-       $('#chemin').html(data);
-       var current = $('#chemin').html();
-       $('#dossiers').html("");
-         explore(current);
-         v = $("div.test td").html().replace(/\$\$/g, '$');
-     });
-      /*$("#dossiers").html("");
-      explore(dir);*/
     });
 
   }
+  $('#retour').click(function() {
+    var rep = $('#chemin').html();
+    $.post ('fonctions.php', {action: "retour", current: rep}, function(data, status) {
+      $('#chemin').html(data);
+      var current = $('#chemin').html();
+      $('#dossiers').html("");
+       explore(current);
+     });
+  });
+
   explore("/home");
 });
