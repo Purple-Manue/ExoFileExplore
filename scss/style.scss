@@ -1,11 +1,14 @@
-@import "mixin.scss";
+@import "mixin";
+
 body {
   background-color: #bfc7cc;
 }
+
 .container div {
   @include border-radius(10px);
   background-color: white;
 }
+
 h1 {
   background-color: white;
   text-align: center;
@@ -13,10 +16,12 @@ h1 {
   margin: 10px -15px;
   margin-bottom: 1em;
 }
+
 #navigation {
   margin-bottom:0.5em;
   border: 2px solid black;
 }
+
 #retour {
   text-align: right;
   margin: auto;
@@ -32,6 +37,7 @@ h1 {
   padding-top: 3%;
   border: 2px solid black;
 }
+
 .file {
 padding-left: 20px;
 }

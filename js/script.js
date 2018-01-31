@@ -39,22 +39,20 @@ $(document).ready(function() { //dès que le DOM est chargé
             explore(rep);
             })
          }
-
        });
      }
     });
 
     $('#retour').click(function() {
-      var rep = $('#chemin').html();
-      //console.log(rep);
-      $.post ('fonctions.php', {action: "retour", current: rep}, function(data, status) {
+      $.post ('fonctions.php', {action: "retour"}, function(data, status) {
        $('#chemin').html(data);
        var current = $('#chemin').html();
        $('#dossiers').html("");
-         explore(current);
-     });
+       explore(current);
+      })
     });
 
   }
+
   explore("/home");
 });
