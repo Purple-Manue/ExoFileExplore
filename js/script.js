@@ -53,6 +53,8 @@ $(document).ready(function() { //dès que le DOM est chargé
        $('#dossiers').html("");
          explore(current);
      });
+      /*$("#dossiers").html("");
+      explore(dir);*/
     });
 
   }

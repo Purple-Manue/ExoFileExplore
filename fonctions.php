@@ -7,12 +7,6 @@
   }
 
   function dossiers($dir) {
-    //if (isset($dir)) {
-      /*if (strpos($dir, '.') !== false) {
-        $files = shell_exec("cd . ;ls -m");
-        $files = explode(", ", rtrim($files));
-        return $dir;
-      }*/
       $files = shell_exec("cd $dir; ls -m"); // liste les fichiers et dossiers du répertoire courant dans une chaine de caractères
       $file = explode(", ", rtrim($files)); // on transforme la chaîne de caractères en tableau
       //$result = json_encode($file);
