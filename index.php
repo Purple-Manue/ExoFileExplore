@@ -19,8 +19,6 @@
 
       <div id="dossiers" class="row"></div>
 
-    </div>
-
     <script type="text/javascript" src="librairies/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
   </body>
