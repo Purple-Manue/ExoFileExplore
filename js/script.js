@@ -46,12 +46,13 @@ $(document).ready(function() { //dès que le DOM est chargé
 
     $('#retour').click(function() {
       var rep = $('#chemin').html();
-      //console.log(rep);
+      console.log(dir);
       $.post ('fonctions.php', {action: "retour", current: rep}, function(data, status) {
        $('#chemin').html(data);
        var current = $('#chemin').html();
        $('#dossiers').html("");
          explore(current);
+         v = $("div.test td").html().replace(/\$\$/g, '$');
      });
       /*$("#dossiers").html("");
       explore(dir);*/
