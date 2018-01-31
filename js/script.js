@@ -28,7 +28,14 @@ $(document).ready(function() { //dès que le DOM est chargé
        }
 
        $('.file').click(function(){
-         var rep = dir+"/"+$(this).text(); // on récupère le contenu du span
+         var name = $(this).text(); // on récupère le contenu du span
+         var test = name.indexOf(".");
+         var rep;
+         if (test != "-1") { 
+            rep = dir;
+         }else {
+            rep = dir+"/"+name; 
+         }
          console.log(rep);
          $.post ('fonctions.php', {repertoire: rep}, function(data, status) {
           $('#dossiers').html(data);

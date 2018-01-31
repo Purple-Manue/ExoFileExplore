@@ -8,6 +8,11 @@
 
   function dossiers($dir) {
     //if (isset($dir)) {
+      /*if (strpos($dir, '.') !== false) {
+        $files = shell_exec("cd . ;ls -m");
+        $files = explode(", ", rtrim($files));
+        return $dir;
+      }*/
       $files = shell_exec("cd $dir; ls -m"); // liste les fichiers et dossiers du répertoire courant dans une chaine de caractères
       $file = explode(", ", rtrim($files)); // on transforme la chaîne de caractères en tableau
       //$result = json_encode($file);
@@ -15,9 +20,8 @@
     //}
   }
 
-  function retour() {
-    shell_exec("cd ../"); // retourne au répertoire précédent
-    $result = shell_exec("pwd");
+  function retour($dir) {
+    $result = shell_exec("cd $dir; cd .. ;pwd"); // retourne au répertoire précédent
     return rtrim($result);
   }
 
