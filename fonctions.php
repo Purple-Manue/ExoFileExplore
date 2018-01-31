@@ -21,7 +21,6 @@
   }
 
   function retour($dir) {
-
     //shell_exec("cd $dir; pwd; cd ../"); // retourne au répertoire précédent
     $result = shell_exec("cd $dir; cd ..; pwd");
     echo rtrim($result);

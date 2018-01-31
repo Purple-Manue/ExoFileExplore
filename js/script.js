@@ -21,19 +21,25 @@ $(document).ready(function() { //dès que le DOM est chargé
        for (var i=0; i<lst[1].length; i++) { // on lance une boucle dans le tableau
          var name = lst[1][i].indexOf("."); // on initialise la variable name dans laquelle on regarde pour chaque clé si elle contient un point
           if (name != "-1") { // si il y a un point dans le nom, on considère qu'il s'agit d'un fichier
-            $('#fichiers').append('<span class="file col-6 col-md-3">' + '<i class="fas fa-file fa-4x">' + '</i>' + '<br />' + lst[1][i] + '</span>');
+            $('#dossiers').append('<span class="fichier" class="file col-6 col-md-3">' + '<i class="fas fa-file fa-4x">' + '</i>' + '<br />' + lst[1][i] + '</span>');
           } else { // sinon, on considère que c'est un dossier et on affiche une icone en conséquence
-            $('#dossiers').append('<span class="file col-6 col-md-3">' + '<i class="fas fa-folder-open fa-4x">' + '</i>' + '<br />' + lst[1][i] + '</span>');
+            $('#dossiers').append('<span class="dossier" class="file col-6 col-md-3">' + '<i class="fas fa-folder-open fa-4x">' + '</i>' + '<br />' + lst[1][i] + '</span>');
           }
        }
 
        $('.file').click(function(){
-         var rep = dir+"/"+$(this).text(); // on récupère le contenu du span
-         console.log(rep);
-         $.post ('fonctions.php', {repertoire: rep}, function(data, status) {
-          $('#dossiers').html(data);
+         var name = $(this).text(); // on récupère le contenu du span
+         var test = name.indexOf(".");
+         var rep;
+         if (test == "-1") {
+            rep = dir+"/"+name;
+            console.log(rep);
+            $.post ('fonctions.php', {repertoire: rep}, function(data, status) {
+            $('#dossiers').html("");
             explore(rep);
-         })
+            })
+         }
+
        });
      }
     });

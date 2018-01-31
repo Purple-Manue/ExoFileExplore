@@ -17,10 +17,7 @@
         <span id="retour" class="col-4"><i class=" back fas fa-caret-square-left fa-2x "></i></span>
       </div>
 
-    <div id="explo" class="row">
-      <div id="dossiers" class="col-6"></div>
-      <div id="fichiers" class="col-6"></div>
-    </div>
+      <div id="dossiers" class="row"></div>
 
     <script type="text/javascript" src="librairies/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
