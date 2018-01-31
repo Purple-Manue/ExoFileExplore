@@ -15,10 +15,10 @@
     //}
   }
 
-  function retour() {
-    shell_exec("cd ../"); // retourne au répertoire précédent
-    $result = shell_exec("pwd");
-    return rtrim($result);
+  function retour($dir) {
+    //shell_exec("cd $dir; pwd; cd ../"); // retourne au répertoire précédent
+    $result = shell_exec("cd $dir; cd ..; pwd");
+    echo rtrim($result);
   }
 
   if (isset($_POST['repertoire'])) {
@@ -28,7 +28,7 @@
   }
 
   if ($_POST['action'] == "retour") {
-    retour();
+    retour($_POST['current']);
   }
 
 ?>
