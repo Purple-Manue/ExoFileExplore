@@ -1,4 +1,4 @@
-@import "mixin.scss";
+@import "mixin";
 body {
   background-color: #bfc7cc;
 }
@@ -12,6 +12,10 @@ h1 {
   border: 5px black double;
   margin: 10px -15px;
   margin-bottom: 1em;
+}
+#explo {
+  @include border-radius(10px);
+  border: 2px solid black;
 }
 #navigation {
   margin-bottom:0.5em;
@@ -30,7 +34,7 @@ h1 {
 #dossiers {
   margin-bottom: 5em;
   padding-top: 3%;
-  border: 2px solid black;
+
 }
 .file {
 padding-left: 20px;
