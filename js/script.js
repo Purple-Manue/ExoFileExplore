@@ -44,12 +44,14 @@ function explore(repertoire) { // on déclare une fonction explore qui prendra p
 }
 $('#retour').click(function() { // au clic sur le span dont l'id est "retour"
   var rep = $('#chemin').html(); // on récupère le contenu du span dont l'id est "chemin" dans une variable
-  $.post ('fonctions.php', {action: "retour", current: rep}, function(data, status) { // on post la chaine "retour" et une valeur 'current'
+  if (rep != "/"){
+    $.post ('fonctions.php', {action: "retour", current: rep}, function(data, status) { // on post la chaine "retour" et une valeur 'current'
     $('#chemin').html(data); // on modifie le contenu du span chemin avec la data renvoyé par la fonction php
     var current = $('#chemin').html(); // on récupère cette nouvelle valeur dans une variable 'current'
     $('#dossiers').html(""); // on vide la div "dossiers"
      explore(current); // on lance la fonction explore avec le contenu de la variable current en argument
    });
+  } 
 });
 
 
