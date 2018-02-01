@@ -24,8 +24,13 @@ function explore(repertoire) { // on déclare une fonction explore qui prendra p
        var name = $(this).text(); // on récupère le contenu du span
        var test = name.indexOf("."); // on check si ce nom contient un .
        var rep; // on initialise une variable rep
-       if (test == "-1") { // si il n'y a pas de .
-          rep = dir+"/"+name; // on envoie la valeur dans la variable rep
+       var chemin = $('#chemin').html();
+       if (test == "-1") { // si il n'y a pas de "."
+          if (chemin != "/") { // si le chemin est différent de "/"
+            rep = dir+"/"+name; // on envoie la valeur dans la variable rep en ajoutant un "/"
+          } else { // sinon
+            rep = dir+name; // on envoie la valeur dans la variable rep sans "/"
+          }
           $.post ('fonctions.php', {repertoire: rep}, function(data, status) { // on envoie à php une requete post mentionnant 'repertoire'
           $('#dossiers').html(""); // on vide la div "dossiers"
           explore(rep); // on lance la fonction explore avec le contenu de la variable rep en argument
@@ -43,11 +48,11 @@ $('#retour').click(function() { // au clic sur le span dont l'id est "retour"
     $('#chemin').html(data); // on modifie le contenu du span chemin avec la data renvoyé par la fonction php
     var current = $('#chemin').html(); // on récupère cette nouvelle valeur dans une variable 'current'
     $('#dossiers').html(""); // on vide la div "dossiers"
-     explore(current); // on lance la fonction expllore avec le contenu de la variable current en argument
+     explore(current); // on lance la fonction explore avec le contenu de la variable current en argument
    });
 });
 
 
 $(document).ready(function() { //dès que le DOM est chargé
-  explore("/home"); // on lance la fonction explore avec le repertoire racine en argument
+  explore("/"); // on lance la fonction explore avec le repertoire racine en argument
 });
